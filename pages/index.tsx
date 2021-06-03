@@ -5,7 +5,6 @@ import {
   Divider,
   Drawer,
   IconButton,
-  Link,
   List,
   ListItem,
   ListItemText,
@@ -22,8 +21,8 @@ import ProjectCard, { ProjectCardProps } from '../components/project-card';
 import projects from '../constants/projects';
 import useStyles from '../styles/index.styles';
 import * as skills from '../constants/skills';
-import useIsMobile from '../hooks/use-is-mobile';
 import useDrawer from '../hooks/use-drawer';
+import useIsMobile from '../hooks/use-is-mobile';
 
 interface HomeProps {
   projects: ProjectCardProps[];
@@ -76,26 +75,24 @@ export default function Home({
         color="inherit"
       >
         <Toolbar>
-          {isMobile && (
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={toggleDrawer}
-            >
-              <MenuIcon />
-            </IconButton>
-          )}
+          <IconButton
+            className={classes.mobileOnly}
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer}
+          >
+            <MenuIcon />
+          </IconButton>
+
           <Typography variant="h3" component="h1">
             Calvin Ling
           </Typography>
-          {!isMobile && (
-            <nav className={classes.appBarNav}>
-              <Button href="#about">About me</Button>
-              <Button href="#skills">Skills</Button>
-              <Button href="#projects">Projects</Button>
-            </nav>
-          )}
+          <nav className={`${classes.appBarNav} ${classes.desktopOnly}`}>
+            <Button href="#about">About me</Button>
+            <Button href="#skills">Skills</Button>
+            <Button href="#projects">Projects</Button>
+          </nav>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -108,13 +105,18 @@ export default function Home({
       >
         <Toolbar />
         <List>
-          <ListItem component={Link} href="#about" onClick={toggleDrawer}>
+          <ListItem button component="a" href="#about" onClick={toggleDrawer}>
             <ListItemText primary="About me" />
           </ListItem>
-          <ListItem component={Link} href="#skills" onClick={toggleDrawer}>
+          <ListItem button component="a" href="#skills" onClick={toggleDrawer}>
             <ListItemText primary="Skills" />
           </ListItem>
-          <ListItem component={Link} href="#projects" onClick={toggleDrawer}>
+          <ListItem
+            button
+            component="a"
+            href="#projects"
+            onClick={toggleDrawer}
+          >
             <ListItemText primary="Projects" />
           </ListItem>
         </List>

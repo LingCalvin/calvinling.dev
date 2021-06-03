@@ -53,6 +53,16 @@ const useStyles = makeStyles((theme) => ({
   projectListItem: {
     width: '100%',
   },
+  mobileOnly: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  desktopOnly: {
+    [theme.breakpoints.down('xs')]: {
+      display: 'none',
+    },
+  },
 }));
 
 export default useStyles;
