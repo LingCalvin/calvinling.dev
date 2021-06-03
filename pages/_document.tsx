@@ -1,3 +1,4 @@
+import { ServerStyleSheets } from '@material-ui/core';
 import NextDocument, {
   DocumentContext,
   Head,
@@ -5,11 +6,26 @@ import NextDocument, {
   Main,
   NextScript,
 } from 'next/document';
+import { Children } from 'react';
 
 class Document extends NextDocument {
   static async getInitialProps(ctx: DocumentContext) {
+    const sheets = new ServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+      });
+
     const initialProps = await NextDocument.getInitialProps(ctx);
-    return { ...initialProps };
+
+    return {
+      ...initialProps,
+      styles: [
+        ...Children.toArray(initialProps.styles),
+        sheets.getStyleElement(),
+      ],
+    };
   }
 
   render() {
