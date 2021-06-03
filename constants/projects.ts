@@ -12,7 +12,7 @@ const projects: ProjectCardProps[] = [
   {
     title: 'weather-react',
     description:
-      'A web app for viewing the current forecast built with React and TypeScript. It supports hourly and daily forecasts as well as retrieving weather alerts. Data is retrieved from the National Weather Service.',
+      'A web app for viewing the current forecast built with React and TypeScript. It supports hourly and daily forecasts as well as fetching active weather alerts. Data is retrieved from the National Weather Service.',
     tags: ['React', 'TypeScript'],
     demoURL: 'https://lingcalvin.github.io/weather-react/',
     sourceURL: 'https://github.com/LingCalvin/weather-react',
