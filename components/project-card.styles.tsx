@@ -1,6 +1,10 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  actionRow: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+  },
   cardContent: {
     display: 'flex',
     flexDirection: 'column',
@@ -9,10 +13,7 @@ const useStyles = makeStyles((theme) => ({
   tagRow: {
     display: 'flex',
     gap: theme.spacing(1),
-  },
-  actionRow: {
-    display: 'flex',
-    justifyContent: 'flex-end',
+    flexWrap: 'wrap',
   },
 }));
 

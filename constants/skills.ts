@@ -1,4 +1,6 @@
-export const frontEnd: string[] = [
+import Tag from '../types/tag';
+
+export const frontEnd: Tag[] = [
   'React',
   'TypeScript',
   'JavaScript',
@@ -6,4 +8,4 @@ export const frontEnd: string[] = [
   'CSS',
 ];
 
-export const backEnd: string[] = ['Node.js', 'NestJS'];
+export const backEnd: Tag[] = ['Node.js', 'NestJS'];

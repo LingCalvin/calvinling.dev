@@ -6,12 +6,13 @@ import {
   Chip,
   Typography,
 } from '@material-ui/core';
+import Tag from '../types/tag';
 import useStyles from './project-card.styles';
 
 export interface ProjectCardProps {
   title: string;
   description: string;
-  tags: string[];
+  tags: Tag[];
   demoURL?: string;
   sourceURL?: string;
   className?: string;
