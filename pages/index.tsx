@@ -51,7 +51,9 @@ export default function Home({
                 <Typography variant="h3">Front-end</Typography>
                 <ul>
                   {frontEndSkills.map((skill) => (
-                    <li key={skill}>{skill}</li>
+                    <Typography key={skill} component="li">
+                      {skill}
+                    </Typography>
                   ))}
                 </ul>
               </section>
