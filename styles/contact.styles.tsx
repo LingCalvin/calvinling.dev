@@ -1,6 +1,9 @@
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+  backdrop: {
+    zIndex: 1400,
+  },
   content: {
     display: 'flex',
     flexDirection: 'column',

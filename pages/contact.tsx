@@ -1,4 +1,11 @@
-import { Button, Container, Snackbar, Typography } from '@material-ui/core';
+import {
+  Backdrop,
+  Button,
+  CircularProgress,
+  Container,
+  Snackbar,
+  Typography,
+} from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -19,7 +26,7 @@ export default function Contact() {
     severity,
     setSeverity,
     setMessage,
-    setOpen,
+    setOpen: setSnackbarOpen,
   } = useSnackbar({
     anchorOrigin: isMobile
       ? undefined
@@ -27,10 +34,12 @@ export default function Contact() {
     autoHideDuration: 6000,
   });
 
+  const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   const onSubmit: ContactFormProps['onSubmit'] = async (data) => {
-    setOpen(false);
+    setSubmitting(true);
+    setSnackbarOpen(false);
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -41,18 +50,18 @@ export default function Contact() {
       const resJson = await res.json();
 
       if (res.ok) {
-        setMessage('Your message was successfully sent.');
-        setSeverity('success');
         setSubmitted(true);
       } else {
         setMessage(`${resJson.message}.`);
         setSeverity('error');
+        setSnackbarOpen(true);
       }
     } catch (e) {
       setMessage('An error has occurred. Please try again later.');
       setSeverity('error');
+      setSnackbarOpen(true);
     } finally {
-      setOpen(true);
+      setSubmitting(false);
     }
   };
 
@@ -61,6 +70,9 @@ export default function Contact() {
       <Head>
         <title>Contact Me - Calvin Ling</title>
       </Head>
+      <Backdrop className={classes.backdrop} open={submitting}>
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <Container component="main" className={classes.content}>
         {submitted ? (
           <div className={classes.successMessage}>

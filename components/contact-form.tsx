@@ -91,7 +91,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       <div className={classes.hCaptchaContainer}>
         <HCaptcha
           sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY ?? ''}
-          reCaptchaCompat={false}
           onExpire={() => setToken(null)}
           onVerify={setToken}
           ref={captchaRef}

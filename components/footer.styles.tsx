@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
   },
   socialLinks: {
     display: 'flex',
-    gap: theme.spacing(1),
+    gap: theme.spacing(2),
   },
 }));
 

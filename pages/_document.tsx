@@ -34,7 +34,7 @@ class Document extends NextDocument {
         <Head>
           <meta
             name="description"
-            content="I am Calvin Ling. I design and build websites."
+            content="I am Calvin Ling and I build websites."
           />
           <link rel="icon" type="image/svg+xml" href="/favicon.svg"></link>
           <link rel="alternate icon" href="/favicon.ico" />

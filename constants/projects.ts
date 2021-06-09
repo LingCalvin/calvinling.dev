@@ -22,6 +22,7 @@ const projects: ProjectCardProps[] = [
     description: 'This portfolio website.',
     tags: ['Next.js', 'React', 'TypeScript'],
     demoURL: 'https://calvinling.dev',
+    sourceURL: 'https://github.com/LingCalvin/calvinling.dev',
   },
 ];
 
