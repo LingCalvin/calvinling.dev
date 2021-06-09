@@ -7,6 +7,7 @@ import Layout from '../components/layout';
 import useIsMobile from '../hooks/use-is-mobile';
 import useSnackbar from '../hooks/use-snackbar';
 import useStyles from '../styles/contact.styles';
+import Head from 'next/head';
 
 export default function Contact() {
   const classes = useStyles();
@@ -57,6 +58,9 @@ export default function Contact() {
 
   return (
     <Layout>
+      <Head>
+        <title>Contact Me - Calvin Ling</title>
+      </Head>
       <Container component="main" className={classes.content}>
         {submitted ? (
           <div className={classes.successMessage}>
