@@ -29,7 +29,7 @@ export default function Home({
       <Head>
         <title>Calvin Ling</title>
       </Head>
-      <main className={classes.content}>
+      <main className={`${classes.main} ${classes.content}`}>
         <div id="about" className={classes.about}>
           <Container>
             <Typography

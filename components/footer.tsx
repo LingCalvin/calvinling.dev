@@ -12,6 +12,7 @@ export default function Footer() {
             {text}
           </Link>
         ))}
+        <Link href="/contact">Contact me</Link>
       </div>
     </footer>
   );

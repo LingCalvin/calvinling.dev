@@ -22,6 +22,9 @@ const useStyles = makeStyles((theme) => ({
   heading: {
     marginBottom: theme.spacing(1),
   },
+  main: {
+    marginBottom: theme.spacing(3),
+  },
   projectList: {
     display: 'grid',
     gridTemplateColumns: '1fr',

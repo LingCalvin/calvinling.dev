@@ -17,13 +17,14 @@ import useIsMobile from '../hooks/use-is-mobile';
 import LinkInfo from '../interfaces/link-info';
 import Footer from './footer';
 import useStyles from './layout.styles';
+import Link from 'next/link';
 
 export interface LayoutProps {
   children: ReactNode;
-  navLinks: LinkInfo[];
+  navLinks?: LinkInfo[];
 }
 
-export default function Layout({ children, navLinks }: LayoutProps) {
+export default function Layout({ children, navLinks = [] }: LayoutProps) {
   const classes = useStyles();
 
   const isMobile = useIsMobile();
@@ -53,65 +54,77 @@ export default function Layout({ children, navLinks }: LayoutProps) {
     }
   }, [isMobile]);
 
+  const hasNavLinks = navLinks.length > 0;
+
   return (
-    <>
+    <div className={classes.root}>
       <AppBar
         className={classes.appBar}
         elevation={scrollTrigger && !drawerOpen ? 4 : 0}
-        position="sticky"
+        position="fixed"
         color="inherit"
       >
         <Toolbar>
-          <IconButton
-            className={classes.mobileOnly}
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={toggleDrawer}
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <Typography variant="h3" component="h1">
-            Calvin Ling
-          </Typography>
-          <nav className={`${classes.appBarNav} ${classes.desktopOnly}`}>
-            {navLinks.map(({ href, text }) => (
-              <Button key={href} href={href}>
-                {text}
-              </Button>
-            ))}
-          </nav>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        // Note: Need to set disableRestoreFocus, otherwise the page jumps when
-        // closing the drawer. See material-ui issue #10756 for more details.
-        ModalProps={{ disableRestoreFocus: true }}
-        open={drawerOpen}
-        anchor="top"
-        onClose={() => setDrawerOpen(false)}
-      >
-        {/* Keep the app bar from covering the menu */}
-        <Toolbar />
-        <List>
-          {navLinks.map(({ href, text }) => (
-            <ListItem
-              key={href}
-              button
-              component="a"
-              href={href}
+          {hasNavLinks && (
+            <IconButton
+              className={classes.mobileOnly}
+              edge="start"
+              color="inherit"
+              aria-label="menu"
               onClick={toggleDrawer}
             >
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <div className={classes.content}>
-        {children}
-        <Footer />
-      </div>
-    </>
+              <MenuIcon />
+            </IconButton>
+          )}
+
+          <Link href="/" passHref>
+            <Button className={classes.homeButton} color="inherit">
+              <Typography variant="h3" component="h1">
+                Calvin Ling
+              </Typography>
+            </Button>
+          </Link>
+
+          {hasNavLinks && (
+            <nav className={`${classes.appBarNav} ${classes.desktopOnly}`}>
+              {navLinks.map(({ href, text }) => (
+                <Button key={href} href={href}>
+                  {text}
+                </Button>
+              ))}
+            </nav>
+          )}
+        </Toolbar>
+      </AppBar>
+      <Toolbar style={{ visibility: 'hidden' }} />
+      {hasNavLinks && (
+        <Drawer
+          // Note: Need to set disableRestoreFocus, otherwise the page jumps when
+          // closing the drawer. See material-ui issue #10756 for more details.
+          ModalProps={{ disableRestoreFocus: true }}
+          open={drawerOpen}
+          anchor="top"
+          onClose={() => setDrawerOpen(false)}
+        >
+          {/* Keep the app bar from covering the menu */}
+          <Toolbar />
+          <List>
+            {navLinks.map(({ href, text }) => (
+              <ListItem
+                key={href}
+                button
+                component="a"
+                href={href}
+                onClick={toggleDrawer}
+              >
+                <ListItemText primary={text} />
+              </ListItem>
+            ))}
+          </List>
+        </Drawer>
+      )}
+      <div className={classes.content}>{children}</div>
+      <Footer />
+    </div>
   );
 }

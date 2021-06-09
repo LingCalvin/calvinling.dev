@@ -12,11 +12,15 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     gap: theme.spacing(3),
+    flexGrow: 1,
   },
   desktopOnly: {
     [theme.breakpoints.down('xs')]: {
       display: 'none',
     },
+  },
+  homeButton: {
+    textTransform: 'none',
   },
   mobileOnly: {
     [theme.breakpoints.up('sm')]: {
@@ -31,6 +35,11 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       scrollPaddingTop: '64px',
     },
+  },
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
   },
 }));
 
