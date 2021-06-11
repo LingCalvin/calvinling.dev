@@ -7,7 +7,7 @@ export default function withCaptchaToken(handler: NextApiHandler) {
     if (!validCaptcha) {
       return res.status(422).json({
         statusCode: 422,
-        message: 'Invalid captcha token',
+        message: 'Invalid captcha token.',
         error: 'Unprocessable Entity',
       });
     }

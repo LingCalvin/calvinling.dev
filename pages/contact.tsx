@@ -52,7 +52,7 @@ export default function Contact() {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setMessage(`${resJson.message}.`);
+        setMessage(resJson.message);
         setSeverity('error');
         setSnackbarOpen(true);
       }
