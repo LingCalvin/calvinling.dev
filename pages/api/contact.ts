@@ -1,37 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { verifyToken } from '../../lib/h-captcha';
 import * as SendGrid from '@sendgrid/mail';
 import contactSchema from '../../schema/contact.schema';
+import withRateLimit from '../../middleware/with-rate-limit';
+import withAllowedMethods from '../../middleware/with-allowed-methods';
+import withCaptchaToken from '../../middleware/with-captcha-token';
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
-  // Reject non-POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({
-      statusCode: 405,
-      message: `Cannot ${req.method} /contact`,
-      error: 'Method Not Allowed',
-    });
-  }
-
+export async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Make sure the request body is properly formatted/exists
   if (!req.body) {
     return res.status(400).json({
       statusCode: 400,
       message: 'Missing or improperly formatted body',
       error: 'Bad Request',
-    });
-  }
-
-  // Check that the captcha token is valid
-  const validCaptcha = await verifyToken(req.body.token);
-  if (!validCaptcha) {
-    return res.status(422).json({
-      statusCode: 422,
-      message: 'Invalid captcha token',
-      error: 'Unprocessable Entity',
     });
   }
 
@@ -65,3 +45,11 @@ export default async function handler(
 
   return res.status(200).json({ statusCode: 200, message: 'Message received' });
 }
+
+export default withAllowedMethods(
+  withRateLimit(withCaptchaToken(handler), {
+    ttl: parseInt(process.env.RATE_LIMIT_TTL ?? '60000'),
+    limit: parseInt(process.env.RATE_LIMIT_LIMIT ?? '2'),
+  }),
+  { allowedMethods: ['POST'], path: '/contact' }
+);
