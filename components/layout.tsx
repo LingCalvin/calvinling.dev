@@ -32,8 +32,10 @@ export default function Layout({ children, navLinks = [] }: LayoutProps) {
   // Prevent the AppBar from overlapping a section when jumping to it from using
   // a link
   useEffect(() => {
-    document.documentElement.classList.add(classes.offset);
-  }, []);
+    const { offset } = classes;
+    document.documentElement.classList.add(offset);
+    return () => document.documentElement.classList.remove(offset);
+  }, [classes]);
 
   // Determine whether the AppBar should be elevated
   const scrollTrigger = useScrollTrigger({
@@ -52,7 +54,7 @@ export default function Layout({ children, navLinks = [] }: LayoutProps) {
     if (!isMobile) {
       setDrawerOpen(false);
     }
-  }, [isMobile]);
+  }, [isMobile, setDrawerOpen]);
 
   const hasNavLinks = navLinks.length > 0;
 
