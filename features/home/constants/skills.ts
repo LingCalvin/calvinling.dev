@@ -1,4 +1,4 @@
-import Tag from '../types/tag';
+import Tag from '../../common/types/tag';
 
 export const frontEnd: Tag[] = [
   'React',

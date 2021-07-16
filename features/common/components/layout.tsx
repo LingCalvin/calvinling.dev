@@ -11,13 +11,13 @@ import {
   useScrollTrigger,
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
+import Link from 'next/link';
 import React, { ReactNode, useEffect } from 'react';
 import useDrawer from '../hooks/use-drawer';
 import useIsMobile from '../hooks/use-is-mobile';
 import LinkInfo from '../interfaces/link-info';
 import Footer from './footer';
 import useStyles from './layout.styles';
-import Link from 'next/link';
 
 export interface LayoutProps {
   children: ReactNode;

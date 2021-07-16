@@ -1,4 +1,4 @@
-import LinkInfo from '../interfaces/link-info';
+import LinkInfo from '../../common/interfaces/link-info';
 
 const socialLinks: LinkInfo[] = [
   { href: 'https://github.com/LingCalvin', text: 'GitHub' },

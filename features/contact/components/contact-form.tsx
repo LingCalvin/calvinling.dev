@@ -1,10 +1,10 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { Button, TextField } from '@material-ui/core';
-import { useForm, useWatch } from 'react-hook-form';
-import useUniqueId from '../hooks/use-unique-id';
-import contactSchema from '../schema/contact.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button } from '@material-ui/core';
 import { useRef, useState } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
+import TextField from '../../common/components/text-field';
+import contactSchema from '../schema/contact.schema';
 import useStyles from './contact-form.styles';
 
 type FormValues = {
@@ -31,10 +31,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
 
   const message = useWatch({ control, name: 'message', defaultValue: '' });
 
-  const nameId = useUniqueId();
-  const emailId = useUniqueId();
-  const messageId = useUniqueId();
-
   const [token, setToken] = useState<string | null>(null);
   const captchaRef = useRef<HCaptcha>(null);
 
@@ -52,7 +48,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
       })}
     >
       <TextField
-        id={nameId}
         fullWidth
         variant="outlined"
         label="Name"
@@ -63,7 +58,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         helperText={errors.name?.message}
       />
       <TextField
-        id={emailId}
         fullWidth
         variant="outlined"
         label="Email"
@@ -74,7 +68,6 @@ export default function ContactForm({ onSubmit }: ContactFormProps) {
         helperText={errors.email?.message}
       />
       <TextField
-        id={messageId}
         fullWidth
         multiline
         variant="outlined"
