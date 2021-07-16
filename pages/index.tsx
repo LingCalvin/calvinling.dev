@@ -1,13 +1,15 @@
 import { Container, Divider, Typography } from '@material-ui/core';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import ProjectCard, { ProjectCardProps } from '../components/project-card';
-import projects from '../constants/projects';
+import Layout from '../features/common/components/layout';
+import LinkInfo from '../features/common/interfaces/link-info';
+import ProjectCard, {
+  ProjectCardProps,
+} from '../features/home/components/project-card';
+import aboutMe from '../features/home/constants/about-me';
+import projects from '../features/home/constants/projects';
+import * as skills from '../features/home/constants/skills';
 import useStyles from '../styles/index.styles';
-import * as skills from '../constants/skills';
-import Layout from '../components/layout';
-import LinkInfo from '../interfaces/link-info';
-import aboutMe from '../constants/about-me';
 
 interface HomeProps {
   aboutMe: string;

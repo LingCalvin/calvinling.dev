@@ -1,5 +1,5 @@
 import { Link } from '@material-ui/core';
-import socialLinks from '../constants/social-links';
+import socialLinks from '../../home/constants/social-links';
 import useStyles from './footer.styles';
 
 export default function Footer() {

@@ -1,10 +1,10 @@
 import HCaptcha from '@hcaptcha/react-hcaptcha';
-import { Button, TextField } from '@material-ui/core';
-import { useForm, useWatch } from 'react-hook-form';
-import useUniqueId from '../hooks/use-unique-id';
-import contactSchema from '../schema/contact.schema';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, TextField } from '@material-ui/core';
 import { useRef, useState } from 'react';
+import { useForm, useWatch } from 'react-hook-form';
+import useUniqueId from '../../common/hooks/use-unique-id';
+import contactSchema from '../schema/contact.schema';
 import useStyles from './contact-form.styles';
 
 type FormValues = {

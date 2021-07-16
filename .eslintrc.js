@@ -5,9 +5,10 @@ module.exports = {
     node: true,
   },
   extends: [
-    'next',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'next',
+    'next/core-web-vitals',
     'plugin:prettier/recommended',
   ],
   plugins: ['@typescript-eslint'],

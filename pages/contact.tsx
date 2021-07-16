@@ -7,14 +7,16 @@ import {
   Typography,
 } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useState } from 'react';
-import ContactForm, { ContactFormProps } from '../components/contact-form';
-import Layout from '../components/layout';
-import useIsMobile from '../hooks/use-is-mobile';
-import useSnackbar from '../hooks/use-snackbar';
+import Layout from '../features/common/components/layout';
+import useIsMobile from '../features/common/hooks/use-is-mobile';
+import useSnackbar from '../features/common/hooks/use-snackbar';
+import ContactForm, {
+  ContactFormProps,
+} from '../features/contact/components/contact-form';
 import useStyles from '../styles/contact.styles';
-import Head from 'next/head';
 
 export default function Contact() {
   const classes = useStyles();

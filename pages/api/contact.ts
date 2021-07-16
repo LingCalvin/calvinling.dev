@@ -1,9 +1,9 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import * as SendGrid from '@sendgrid/mail';
-import contactSchema from '../../schema/contact.schema';
-import withRateLimit from '../../middleware/with-rate-limit';
-import withAllowedMethods from '../../middleware/with-allowed-methods';
-import withCaptchaToken from '../../middleware/with-captcha-token';
+import { NextApiRequest, NextApiResponse } from 'next';
+import withAllowedMethods from '../../features/common/middleware/with-allowed-methods';
+import withCaptchaToken from '../../features/common/middleware/with-captcha-token';
+import withRateLimit from '../../features/common/middleware/with-rate-limit';
+import contactSchema from '../../features/contact/schema/contact.schema';
 
 export async function handler(req: NextApiRequest, res: NextApiResponse) {
   // Make sure the request body is properly formatted/exists
