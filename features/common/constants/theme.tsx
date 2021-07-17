@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core';
+import { createTheme } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: { error: { light: '#E94948', main: '#B00020', dark: '#790000' } },
   typography: {
     h1: { fontSize: '3.75rem' },

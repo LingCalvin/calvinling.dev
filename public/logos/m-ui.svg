@@ -1,0 +1,24 @@
+<!--
+The MIT License (MIT)
+
+Copyright (c) 2014 Call-Em-All
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+-->
+<svg width="36" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M25.7 0v18.74l-7.69 4.43 5.15 2.93 7.68-4.41.02-6.94L36 11.8v12.83L23.16 32l-10.29-5.89v-5.9l.02.02v-.03l7.69-4.41h-.04l.02-6.95-7.69 4.43-7.7-4.44V21.7L0 18.74.03 0l12.84 7.37L25.71 0zM36 0v6l-5 3V3l5-3z" fill="#007FFF" fill-rule="evenodd"/></svg>

@@ -6,9 +6,9 @@ import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { UIDReset } from 'react-uid';
+import theme from '../features/common/constants/theme';
 import useRemoveServerSideCSS from '../features/common/hooks/use-remove-server-side-css';
 import '../styles/globals.css';
-import theme from '../theme';
 
 function MyApp({ Component, pageProps }: AppProps) {
   useRemoveServerSideCSS();
