@@ -33,7 +33,6 @@ export default function Home({ aboutMe, projects }: HomeProps) {
   const classes = useStyles();
 
   const languageLogos = [
-    <ReactLogo key="react" />,
     <TypeScriptLogo key="typescript" />,
     <JavaScriptLogo key="javascript" />,
     <HtmlLogo key="html" />,
@@ -41,6 +40,7 @@ export default function Home({ aboutMe, projects }: HomeProps) {
   ];
 
   const frameworkLogos = [
+    <ReactLogo key="react" />,
     <NextLogo key="next.js" />,
     <NestJsLogo key="nestjs" />,
     <MaterialUiLogo key="material-ui" />,
